@@ -1,4 +1,4 @@
-package com.app.utils;
+package com.app.tester;
 
 import static com.app.utils.HibernateUtils.getFactory;
 

@@ -2,19 +2,41 @@ package com.app.pojos;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Arrays;
 
 // jpa compliant - Hibernate independent
 // For Hibernate Pojo - classes need not be serializable, the primary key property should be serializable
+@Entity // mandatory class level annotation -> telling jvm this has to be persistent
+@Table(name = "users_tbl") // specifies table name
 public class User {
+    @Id // mandatory specify the primary key of an entity
+//    @GeneratedValue // Hibernate chooses the default db specific strategy for automatic primary key generation
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment constraint suitable for MySQL DB
+    @Column(name = "user_id")
     private Integer userId;
+
+    @Column(length = 20) // varchar(20)
     private String name;
+
+    @Column(length = 20, unique = true) // varchar(20), unique constraint
     private String email;
+
+    @Column(length = 15, nullable = false) // varchar(15), NOT NULL constraint
     private String password;
+
+    @Enumerated(EnumType.STRING) // column type varchar(20)
+    @Column(name = "user_role", length = 20)
     private UserRole userRole;
+
+    @Transient // skips from persistent (no corresponding column)
     private String confirmPassword;
+
+    @Column(name = "reg_amount")
     private double regAmount;
-    private LocalDate regDate;
+
+    @Column(name = "reg_date")
+    private LocalDate regDate; // column type : date
+
+    @Lob // column type blob : medium blob
     private byte[] image;
 
     // must supply a default constructor
@@ -117,7 +139,6 @@ public class User {
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", regAmount=" + regAmount +
                 ", regDate=" + regDate +
-                ", image=" + Arrays.toString(image) +
                 '}';
     }
 }
