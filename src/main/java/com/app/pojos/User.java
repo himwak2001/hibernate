@@ -44,6 +44,12 @@ public class User {
         System.out.println("In user constructor");
     }
 
+    public User(String email, double regAmount, LocalDate regDate) {
+        this.email = email;
+        this.regAmount = regAmount;
+        this.regDate = regDate;
+    }
+
     public User(String name, String email, String password, UserRole userRole, String confirmPassword, double regAmount, LocalDate regDate) {
         this.name = name;
         this.email = email;

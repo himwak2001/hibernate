@@ -16,7 +16,8 @@ public class RegisterUser {
             System.out.println("Enter User Details: name, email, password, user role, confirm password, registration amount, registration date");
             // create transient POJO: exists in heap
             User user = new User(sc.next(), sc.next(), sc.next(), UserRole.valueOf(sc.next().toUpperCase()), sc.next(), sc.nextDouble(), LocalDate.parse(sc.next()));
-
+            System.out.println(user.getUserId()); // null
+            user.setUserId(4);
             // create dao instance n test API
             UserDaoImple dao = new UserDaoImple();
             System.out.println(dao.registerUser(user));
