@@ -22,5 +22,7 @@
 
         <!--	add mapping entry per Entity - pojo to be managed by hibernate		-->
         <mapping class="com.app.pojos.User" />
+        <mapping class="com.app.pojos.Student" />
+        <mapping class="com.app.pojos.Course" />
     </session-factory>
 </hibernate-configuration>
